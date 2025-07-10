@@ -30,14 +30,10 @@ html {
       position: absolute; /* Absolute positioning relative to body */
       top: 50%; /* Center vertically */
       left: 50%; /* Center horizontally */
-      /* Corrected scale to ensure video covers the entire background without black bars */
-      /* This calculates the minimum scale needed to cover both width and height based on a 16:9 aspect ratio */
-      transform: translate(-50%, -50%) scale(max(100vw / 16 * 9 / 100, 100vh / 9 * 16 / 100)); 
+      width: 100vw; /* Set initial width to viewport width */
+      height: 100vh; /* Set initial height to viewport height */
+      transform: translate(-50%, -50%) scale(1.25); /* Center and zoom to 125% */
       
-      /* Ensure it's always at least viewport size before scaling */
-      min-width: 100vw; 
-      min-height: 100vh; 
-
       z-index: -1; /* Place behind other content */
       pointer-events: none; /* Allow clicks to pass through to content below */
     }
