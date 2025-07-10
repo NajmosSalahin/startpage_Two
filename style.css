@@ -1,0 +1,162 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap');
+
+html {
+      background-color: #1a1b26;
+      align-items: center;
+      color: #ebdbb2;
+      display: flex;
+      font-family: 'Ubuntu Mono', monospace;
+      font-size: 25px;
+      height: 100%;
+      justify-content: center;
+      margin: 0;
+      width: 100%;
+    }
+
+    body {
+      display: flex; /* For image and nav side-by-side */
+      margin: 0; /* Remove body margin to allow video to fill */
+      padding: 0; /* Remove body padding */
+      align-items: center; /* Vertically center the content-overlay */
+      justify-content: center; /* Horizontally center the content-overlay */
+      height: 100vh; /* Use viewport height for full screen */
+      width: 100vw; /* Use viewport width for full screen */
+      position: relative; /* Needed for video positioning */
+      overflow: hidden; /* Hide overflow from video */
+    }
+
+    /* YouTube Video Background Styles */
+    #bg-youtube-video {
+      position: absolute; /* Absolute positioning relative to body */
+      top: 50%; /* Center vertically */
+      left: 50%; /* Center horizontally */
+      /* Adjusted scale to hide black bars while maintaining aspect ratio (16:9 video on a potentially different aspect ratio screen) */
+      transform: translate(-50%, -50%) scale(max(100vw / 16, 100vh / 9) * 0.09); /* Calculate scale based on viewport aspect ratio to cover */
+      
+      /* Ensure it's always at least viewport size before scaling */
+      min-width: 100vw; 
+      min-height: 100vh; 
+
+      z-index: -1; /* Place behind other content */
+      pointer-events: none; /* Allow clicks to pass through to content below */
+    }
+
+    /* Content Overlay to ensure content is on top and centered */
+    .content-overlay {
+      display: flex;
+      align-items: center; /* Vertically center image and nav */
+      justify-content: center; /* Horizontally center image and nav */
+      width: 100%;
+      height: 100%;
+      z-index: 1; /* Ensure it's above the video */
+      padding: 1em; /* Add back some padding for overall content */
+      box-sizing: border-box; /* Include padding in width/height */
+    }
+
+
+    h1 {
+      font-size: 2em;
+      grid-column: 1 / -1; /* Spans all 3 columns */
+      margin: 0;
+      text-align: center;
+      color: #ff7a93;
+      font-weight: normal;
+      margin-bottom: 1em; /* Space below the title */
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    a:focus,
+    a:hover {
+      color: #a9b1d6;
+    }
+
+    nav {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr); /* Changed to 3 equal columns for 3x2 link grid */
+      gap: 1em; /* Gap between grid items */
+      margin-left: 3em; /* Increased gap to accommodate larger image */
+      min-width: unset;
+      padding: 1em 0;
+    }
+
+    ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      white-space: nowrap;
+    }
+
+    li:first-child {
+      font-weight: bold;
+      line-height: 2em;
+      color: #ad8ee6;
+    }
+
+    img {
+      border: 2px solid #ebdbb2;
+      height: auto;
+      object-fit: cover;
+      object-position: 50% 100%;
+      width: 15.75em; /* Increased image size by 5% */
+      /* margin-right is now handled by nav's margin-left */
+    }
+
+    /* Positioning for the ul elements and form within nav */
+    /* h1 is in grid-row 1, spanning all columns */
+
+    nav ul:nth-of-type(1) { /* General */
+      grid-column: 1;
+      grid-row: 2;
+    }
+    nav ul:nth-of-type(2) { /* Anime */
+      grid-column: 2;
+      grid-row: 2;
+    }
+    nav ul:nth-of-type(3) { /* Reddit */
+      grid-column: 3;
+      grid-row: 2;
+    }
+
+    nav ul:nth-of-type(4) { /* Social - now in second row, first column */
+      grid-column: 1;
+      grid-row: 3;
+    }
+    nav ul:nth-of-type(5) { /* Gaming - now in second row, second column */
+      grid-column: 2;
+      grid-row: 3;
+    }
+    nav ul:nth-of-type(6) { /* Tools - now in second row, third column */
+      grid-column: 3;
+      grid-row: 3;
+    }
+
+    nav form {
+      grid-column: 1 / -1; /* Spans all 3 columns to allow centering */
+      grid-row: 4; /* New row at the very bottom */
+      justify-self: center; /* Centers the form horizontally within its grid area */
+      width: 100%; /* Allow form to take full width of its grid area */
+      margin-top: 2em; /* Add some space above the search bar */
+    }
+
+    input {
+      background-color: unset;
+      font: 16px 'Ubuntu Mono', monospace;
+      color: #ebdbb2;
+      height: 100%;
+      width: 100%;
+      max-width: 20em; /* Limit the width of the input for a "middle" appearance */
+      border-top-style: hidden;
+      border-bottom-style: solid;
+      border-left-style: hidden;
+      border-right-style: hidden;
+      border-bottom-color: #ff9e64;
+      text-align: center;
+      outline: 0;
+      padding-bottom: 0.5em;
+      margin: 0 auto; /* Center the input within its parent form */
+      display: block; /* Make it a block element to apply margin: auto */
+    }

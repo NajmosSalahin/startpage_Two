@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en" class="classes">
+  
+  <head>
+  <title>~</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+  <!-- YouTube Video Background -->
+  <iframe id="bg-youtube-video"
+          src="https://www.youtube.com/embed/9QneqUhCVtU?autoplay=1&controls=0&disablekb=1&fs=0&loop=1&modestbranding=1&showinfo=0&rel=0&playlist=9QneqUhCVtU&start=3660&enablejsapi=1"
+          frameborder="0"
+          allow="autoplay; encrypted-media"
+          allowfullscreen>
+  </iframe>
+
+  <!-- Content Overlay -->
+  <div class="content-overlay">
+    <img src="logo.jpg" alt="anime girl">
+    <nav>
+      <h1>アディブ</h1>
+      <ul>
+        <li>General</li>
+        <li><a href="https://github.com/">github</a></li>
+        <li><a href="https://wallhaven.cc/">wallhaven</a></li>
+        <li><a href="https://www.netflix.com/">netflix</a></li>
+        <li><a href="https://web.whatsapp.com/">whatsapp</a></li>
+
+      </ul>
+
+      <ul>
+        <li>Anime</li>
+        <li><a href="https://anilist.co/home">anilist</a></li>
+        <li><a href="https://animepahe.org/">animepahe</a></li>
+        <li><a href="https://animixplay.to/">animixplay</a></li>
+        <li><a href="https://subsplease.org/">subsplease</a></li>
+
+      </ul>
+
+      <ul>
+        <li>Reddit</li>
+        <li><a href="https://www.reddit.com/r/unixporn/">r/unixporn</a></li>
+        <li><a href="https://www.reddit.com/r/Animemes/">r/animeme</a></li>
+        <li><a href="https://www.reddit.com/r/archlinux/">r/archlinux</a></li>
+        <li><a href="https://www.reddit.com/r/anime_irl/">r/anime_irl</a></li>
+      </ul>
+
+      <ul>
+        <li>Social</li>
+        <li><a href="https://web.whatsapp.com/">whatsapp</a></li>
+        <li><a href="https://www.youtube.com/">youtube</a></li>
+        <li><a href="https://odysee.com/">odysee</a></li>
+        <li><a href="https://www.9gag.com/">9gag</a></li>
+
+      </ul>
+
+      <!-- New Link Sections -->
+      <ul>
+        <li>Gaming</li>
+        <li><a href="https://store.steampowered.com/">Steam</a></li>
+        <li><a href="https://www.epicgames.com/">Epic Games</a></li>
+        <li><a href="https://www.twitch.tv/">Twitch</a></li>
+        <li><a href="https://www.youtube.com/gaming">YouTube Gaming</a></li>
+      </ul>
+
+      <ul>
+        <li>Tools</li>
+        <li><a href="https://chat.openai.com/">ChatGPT</a></li>
+        <li><a href="https://bard.google.com/">Gemini</a></li>
+        <li><a href="https://www.figma.com/">Figma</a></li>
+        <li><a href="https://code.visualstudio.com/">VS Code</a></li>
+      </ul>
+      
+      <form action="https://duckduckgo.com/" method="GET">
+        <input autofocus
+               name="q"
+               type="search"
+               placeholder="Search with ddg...">
+      </form>
+    </nav>
+  </div>
+
+  <script>
+    var player; // Global variable to hold the YouTube player object
+
+    // This function is called by the YouTube IFrame Player API when it's ready
+    function onYouTubeIframeAPIReady() {
+      player = new YT.Player('bg-youtube-video', {
+        events: {
+          'onReady': onPlayerReady
+        }
+      });
+    }
+
+    // This function is called when the player is ready
+    function onPlayerReady(event) {
+      // Set volume to max (100) and unmute when the player is ready
+      if (player && typeof player.setVolume === 'function') {
+        player.setVolume(100); // Set volume to max (100)
+        player.unMute(); // Unmute the video
+      }
+
+      // Add event listener for keyboard input
+      document.addEventListener('keydown', function(e) {
+        // Check for Ctrl + M (removed Shift key)
+        if (e.ctrlKey && e.key === 'M') {
+          e.preventDefault(); // Prevent default browser action for the key combination
+          if (player && typeof player.setVolume === 'function') {
+            player.setVolume(5); // Set volume to 5 (out of 100)
+            player.unMute(); // Unmute the video
+          }
+        }
+      });
+    }
+
+    // Load the YouTube IFrame Player API asynchronously
+    var tag = document.createElement('script');
+    tag.src = "https://www.youtube.com/iframe_api";
+    var firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+  </script>
+</body>
+</html>
