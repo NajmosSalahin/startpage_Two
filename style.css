@@ -30,8 +30,9 @@ html {
       position: absolute; /* Absolute positioning relative to body */
       top: 50%; /* Center vertically */
       left: 50%; /* Center horizontally */
-      /* Adjusted scale to hide black bars while maintaining aspect ratio (16:9 video on a potentially different aspect ratio screen) */
-      transform: translate(-50%, -50%) scale(max(100vw / 16, 100vh / 9) * 0.09); /* Calculate scale based on viewport aspect ratio to cover */
+      /* Corrected scale to ensure video covers the entire background without black bars */
+      /* This calculates the minimum scale needed to cover both width and height based on a 16:9 aspect ratio */
+      transform: translate(-50%, -50%) scale(max(100vw / 16 * 9 / 100, 100vh / 9 * 16 / 100)); 
       
       /* Ensure it's always at least viewport size before scaling */
       min-width: 100vw; 
