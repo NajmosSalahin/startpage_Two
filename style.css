@@ -32,7 +32,7 @@ html {
       left: 50%; /* Center horizontally */
       width: 100vw; /* Set initial width to viewport width */
       height: 100vh; /* Set initial height to viewport height */
-      transform: translate(-50%, -50%) scale(1.25); /* Center and zoom to 125% */
+      transform: translate(-50%, -50%) scale(1.21); /* Center and zoom to 115% (10% less than 125%) */
       
       z-index: -1; /* Place behind other content */
       pointer-events: none; /* Allow clicks to pass through to content below */
