@@ -385,12 +385,14 @@
       const blinkingUnderscore = document.getElementById('blinking-underscore');
 
       // Initial state: input and underscore are hidden
-      searchInput.style.display = 'none';
+      searchInput.style.width = '0';
+      searchInput.style.opacity = '0';
       blinkingUnderscore.style.display = 'none';
 
       // Focus event handler
       searchInput.addEventListener('focus', () => {
-        searchInput.style.display = 'inline-block';
+        searchInput.style.width = '100%'; // Expand width
+        searchInput.style.opacity = '1'; // Make visible
         blinkingUnderscore.style.display = 'inline-block';
         blinkingUnderscore.classList.add('blinking');
       });
@@ -399,8 +401,20 @@
       searchInput.addEventListener('blur', () => {
         blinkingUnderscore.classList.remove('blinking');
         if (searchInput.value === '') {
-          searchInput.style.display = 'none';
+          searchInput.style.width = '0'; // Shrink width
+          searchInput.style.opacity = '0'; // Make invisible
           blinkingUnderscore.style.display = 'none';
+        }
+      });
+
+      // Input event to ensure underscore blinks only when input is focused or has value
+      searchInput.addEventListener('input', () => {
+        if (searchInput.value.length > 0) {
+          blinkingUnderscore.classList.add('blinking');
+        } else if (document.activeElement === searchInput) {
+          blinkingUnderscore.classList.add('blinking'); // Keep blinking if focused and empty
+        } else {
+          blinkingUnderscore.classList.remove('blinking');
         }
       });
 
