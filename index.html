@@ -68,9 +68,8 @@
       </ul>
 
       <form action="https://duckduckgo.com/" method="GET">
-        <div class="search-prompt-container">
-          <span class="static-prompt">cd~/</span><input autofocus name="q" type="search">
-          <span class="blinking-underscore">_</span>
+        <div class="search-line-container" id="search-line-container">
+          <span class="static-prompt" id="static-prompt">cd~/</span><input autofocus name="q" type="search" class="search-input" id="search-input"><span class="blinking-underscore" id="blinking-underscore">_</span>
         </div>
       </form>
     </nav>
@@ -377,6 +376,37 @@
       saveSettingsButton.addEventListener('click', () => {
         saveSettings();
         modal.style.display = 'none';
+      });
+
+      // --- Dynamic Search Bar Logic ---
+      const searchLineContainer = document.getElementById('search-line-container');
+      const staticPrompt = document.getElementById('static-prompt');
+      const searchInput = document.getElementById('search-input');
+      const blinkingUnderscore = document.getElementById('blinking-underscore');
+
+      // Initial state: input and underscore are hidden
+      searchInput.style.display = 'none';
+      blinkingUnderscore.style.display = 'none';
+
+      // Focus event handler
+      searchInput.addEventListener('focus', () => {
+        searchInput.style.display = 'inline-block';
+        blinkingUnderscore.style.display = 'inline-block';
+        blinkingUnderscore.classList.add('blinking');
+      });
+
+      // Blur event handler
+      searchInput.addEventListener('blur', () => {
+        blinkingUnderscore.classList.remove('blinking');
+        if (searchInput.value === '') {
+          searchInput.style.display = 'none';
+          blinkingUnderscore.style.display = 'none';
+        }
+      });
+
+      // Click on the container to focus the input
+      searchLineContainer.addEventListener('click', () => {
+        searchInput.focus();
       });
     });
   </script>
