@@ -207,21 +207,21 @@ input {
 /* Settings Button Styles */
 .settings-button {
   position: fixed;
-  bottom: 10px; /* Adjusted for perfect bottom alignment */
-  right: 10px; /* Adjusted for perfect right alignment */
+  bottom: 5px; /* Adjusted for tighter bottom alignment */
+  right: 5px; /* Adjusted for tighter right alignment */
   background-color: #ad8ee6; /* Matching previous button color */
   color: white;
   border: none;
   border-radius: 50%; /* Make it circular */
-  width: 40px; /* Fixed width for circular shape */
-  height: 40px; /* Fixed height for circular shape */
-  font-size: 1.5em; /* Size of the gear icon */
+  width: 30px; /* Smaller fixed width for circular shape */
+  height: 30px; /* Smaller fixed height for circular shape */
+  font-size: 1.2em; /* Size of the gear icon, adjusted for smaller button */
   display: flex; /* Use flexbox to center content */
   align-items: center; /* Center vertically */
   justify-content: center; /* Center horizontally */
   cursor: pointer;
   z-index: 100;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Smaller shadow */
   transition: background-color 0.3s ease;
   padding: 0; /* Remove padding to ensure perfect circle */
 }
@@ -513,9 +513,9 @@ input {
   }
 
   .settings-button {
-    width: 35px; /* Slightly smaller on very small screens */
-    height: 35px;
-    font-size: 1.3em;
+    width: 25px; /* Even smaller on very small screens */
+    height: 25px;
+    font-size: 1em;
   }
 
   .modal-content h2 {
