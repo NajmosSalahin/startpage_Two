@@ -186,40 +186,50 @@ nav form {
   /* Allow form to take full width of its grid area */
   margin-top: 2em;
   /* Add some space above the search bar */
-  display: flex; /* Use flexbox for input and underscore */
-  justify-content: center; /* Center the input and underscore */
-  align-items: baseline; /* Align them at the baseline */
+  display: flex;
+  /* Use flexbox for the container */
+  justify-content: center;
+  /* Center the container */
+  align-items: baseline;
+  /* Align items at the baseline */
 }
 
-.search-input-container {
+.search-prompt-container {
   display: flex;
-  align-items: baseline; /* Align input and underscore */
+  align-items: baseline; /* Align static prompt, input, and underscore */
   max-width: 20em; /* Match input max-width */
   width: 100%;
-  justify-content: center;
+  justify-content: center; /* Center the entire prompt block */
 }
 
-input {
+.static-prompt {
+  font: 16px 'Ubuntu Mono', monospace;
+  color: #ebdbb2; /* Gruvbox foreground */
+  padding-bottom: 0.5em; /* Match input padding-bottom */
+  white-space: nowrap; /* Prevent wrapping */
+}
+
+input[type="search"] { /* Target search input specifically */
   background-color: unset;
   font: 16px 'Ubuntu Mono', monospace;
   color: #ebdbb2;
   /* Gruvbox foreground */
   height: 100%;
-  width: 100%;
-  max-width: 20em;
-  /* Limit the width of the input for a "middle" appearance */
+  width: 100%; /* Allow input to grow */
+  max-width: 20em; /* Limit the width of the input for a "middle" appearance */
   border-top-style: hidden;
   border-bottom-style: solid;
   border-left-style: hidden;
   border-right-style: hidden;
   border-bottom-color: #d79921;
   /* Gruvbox Yellow */
-  text-align: center;
+  text-align: left; /* Align text to the left within the input */
   outline: 0;
   padding-bottom: 0.5em;
   margin: 0; /* Remove margin from input itself */
   display: block;
-  /* Make it a block element to apply margin: auto */
+  flex-grow: 1; /* Allow input to take available space */
+  min-width: 50px; /* Ensure it doesn't shrink too much */
 }
 
 /* Blinking underscore animation */
@@ -240,8 +250,8 @@ input {
 /* Settings Button Styles */
 .settings-button {
   position: fixed;
-  bottom: 2px; /* Even tighter bottom alignment */
-  right: 2px; /* Even tighter right alignment */
+  bottom: 1px; /* Even tighter bottom alignment */
+  right: 1px; /* Even tighter right alignment */
   background-color: #458588;
   /* Gruvbox Blue */
   color: transparent;
@@ -249,9 +259,9 @@ input {
   border: none;
   border-radius: 50%;
   /* Make it circular */
-  width: 15px;
+  width: 12px;
   /* Even smaller fixed width for circular shape */
-  height: 15px;
+  height: 12px;
   /* Even smaller fixed height for circular shape */
   font-size: 0;
   /* Hide any content like the gear icon */
@@ -263,7 +273,7 @@ input {
   /* Center horizontally */
   cursor: pointer;
   z-index: 100;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
   /* Smaller shadow */
   transition: background-color 0.3s ease;
   padding: 0;
@@ -575,9 +585,9 @@ input {
   }
 
   .settings-button {
-    width: 15px;
+    width: 12px;
     /* Even smaller on very small screens */
-    height: 15px;
+    height: 12px;
     font-size: 0;
     /* Hide any content like the gear icon */
   }
