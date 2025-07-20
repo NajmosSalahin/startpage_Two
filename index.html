@@ -69,7 +69,7 @@
 
       <form action="https://duckduckgo.com/" method="GET">
         <div class="search-line-container" id="search-line-container">
-          <span class="static-prompt" id="static-prompt">> cd~/</span><span class="blinking-underscore" id="blinking-underscore">_</span><input autofocus name="q" type="search" class="search-input" id="search-input">
+          <span class="static-prompt" id="static-prompt">cd~/</span><input autofocus name="q" type="search" class="search-input" id="search-input"><span class="blinking-underscore" id="blinking-underscore">_</span>
         </div>
       </form>
     </nav>
@@ -228,12 +228,14 @@
         document.body.style.backgroundColor = '#1d2021'; // Gruvbox themed black
         if (player && typeof player.stopVideo === 'function') {
           player.stopVideo(); // Stop the video
+          player.mute(); // Mute the video
         }
       } else {
         videoIframe.style.display = 'block';
         document.body.style.backgroundColor = ''; // Revert to CSS default
         if (player && typeof player.loadVideoById === 'function') {
           player.loadVideoById(videoId); // Load and play the video
+          player.unMute(); // Unmute the video
         } else {
           // Fallback if player not ready yet or API not loaded
           videoIframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&controls=0&disablekb=1&fs=0&loop=1&modestbranding=1&showinfo=0&rel=0&playlist=${videoId}&start=3660&enablejsapi=1`;
