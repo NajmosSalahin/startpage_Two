@@ -231,14 +231,23 @@ nav form {
   /* Align text to the left within the input */
   min-width: 10px;
   /* Ensure it doesn't shrink too much */
-  transition: width 0.3s ease-in-out, opacity 0.3s ease-in-out; /* Smooth transition */
-  border-bottom: 1px solid transparent; /* Initially transparent */
+  transition: width 0.3s ease-in-out, opacity 0.3s ease-in-out;
+  /* Smooth transition */
+  border-bottom: 1px solid transparent;
+  /* Initially transparent */
+  width: 0;
+  /* Initially hidden */
+  opacity: 0;
+  /* Initially hidden */
 }
 
 .search-input.active-input {
-  width: 100%; /* Expand width */
-  opacity: 1; /* Make visible */
-  border-bottom: 1px solid #d79921; /* Gruvbox Yellow when active */
+  width: 100%;
+  /* Expand width */
+  opacity: 1;
+  /* Make visible */
+  border-bottom: 1px solid #d79921;
+  /* Gruvbox Yellow when active */
 }
 
 /* Blinking underscore animation */
@@ -324,7 +333,6 @@ nav form {
   /* Enable scroll if needed */
   background-color: rgba(0, 0, 0, 0.7);
   /* Black w/ opacity */
-  display: flex;
   align-items: center;
   justify-content: center;
 }
