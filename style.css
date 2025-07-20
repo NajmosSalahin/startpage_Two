@@ -1,9 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap');
 
 html {
-  background-color: #1a1b26;
+  background-color: #1d2021; /* Gruvbox themed black */
   align-items: center;
-  color: #ebdbb2;
+  color: #ebdbb2; /* Gruvbox foreground */
   display: flex;
   font-family: 'Ubuntu Mono', monospace;
   font-size: 25px;
@@ -79,7 +79,7 @@ h1 {
   /* Spans all 3 columns */
   margin: 0;
   text-align: center;
-  color: #ff7a93;
+  color: #cc241d; /* Gruvbox Red */
   font-weight: normal;
   margin-bottom: 1em;
   /* Space below the title */
@@ -92,7 +92,7 @@ a {
 
 a:focus,
 a:hover {
-  color: #a9b1d6;
+  color: #83a598; /* Gruvbox Green/Aqua for hover */
 }
 
 nav {
@@ -117,11 +117,11 @@ ul {
 li:first-child {
   font-weight: bold;
   line-height: 2em;
-  color: #ad8ee6;
+  color: #83a598; /* Gruvbox Aqua */
 }
 
 img {
-  border: 2px solid #ebdbb2;
+  border: 2px solid #ebdbb2; /* Gruvbox foreground */
   height: auto;
   object-fit: cover;
   object-position: 50% 100%;
@@ -185,7 +185,7 @@ nav form {
 input {
   background-color: unset;
   font: 16px 'Ubuntu Mono', monospace;
-  color: #ebdbb2;
+  color: #ebdbb2; /* Gruvbox foreground */
   height: 100%;
   width: 100%;
   max-width: 20em;
@@ -194,7 +194,7 @@ input {
   border-bottom-style: solid;
   border-left-style: hidden;
   border-right-style: hidden;
-  border-bottom-color: #ff9e64;
+  border-bottom-color: #d79921; /* Gruvbox Yellow */
   text-align: center;
   outline: 0;
   padding-bottom: 0.5em;
@@ -209,7 +209,7 @@ input {
   position: fixed;
   bottom: 5px; /* Adjusted for tighter bottom alignment */
   right: 5px; /* Adjusted for tighter right alignment */
-  background-color: #ad8ee6; /* Matching previous button color */
+  background-color: #458588; /* Gruvbox Blue */
   color: transparent; /* Make text/icon transparent */
   border: none;
   border-radius: 50%; /* Make it circular */
@@ -227,7 +227,7 @@ input {
 }
 
 .settings-button:hover {
-  background-color: #926cdb;
+  background-color: #689d6a; /* Gruvbox Cyan for hover */
 }
 
 /* Modal Styles */
@@ -254,10 +254,10 @@ input {
 }
 
 .modal-content {
-  background-color: #1a1b26;
+  background-color: #282828; /* Gruvbox dark background */
   margin: auto;
   padding: 20px;
-  border: 1px solid #888;
+  border: 1px solid #504945; /* Gruvbox gray */
   width: 90%;
   /* Responsive width */
   max-width: 600px;
@@ -265,13 +265,13 @@ input {
   border-radius: 10px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
   position: relative;
-  color: #ebdbb2;
+  color: #ebdbb2; /* Gruvbox foreground */
   font-size: 0.8em;
   /* Adjust font size for modal content */
 }
 
 .close-button {
-  color: #aaa;
+  color: #a89984; /* Gruvbox gray */
   position: absolute;
   top: 10px;
   right: 20px;
@@ -282,12 +282,12 @@ input {
 
 .close-button:hover,
 .close-button:focus {
-  color: #ebdbb2;
+  color: #ebdbb2; /* Gruvbox foreground */
   text-decoration: none;
 }
 
 .modal-content h2 {
-  color: #ff7a93;
+  color: #cc241d; /* Gruvbox Red */
   text-align: center;
   margin-bottom: 1em;
   font-size: 1.5em;
@@ -296,7 +296,7 @@ input {
 .setting-section {
   margin-bottom: 1.5em;
   padding-bottom: 1.5em;
-  border-bottom: 1px solid #333;
+  border-bottom: 1px solid #665c54; /* Gruvbox gray */
 }
 
 .setting-section:last-child {
@@ -306,7 +306,7 @@ input {
 }
 
 .setting-section h3 {
-  color: #ad8ee6;
+  color: #83a598; /* Gruvbox Aqua */
   margin-top: 0;
   margin-bottom: 0.8em;
   font-size: 1.2em;
@@ -315,16 +315,16 @@ input {
 .modal-content label {
   display: block;
   margin-bottom: 0.5em;
-  color: #a9b1d6;
+  color: #a89984; /* Gruvbox gray */
 }
 
 .modal-content input[type="text"] {
   width: calc(100% - 20px);
   padding: 8px 10px;
   margin-bottom: 1em;
-  border: 1px solid #555;
-  background-color: #2a2b36;
-  color: #ebdbb2;
+  border: 1px solid #665c54; /* Gruvbox gray */
+  background-color: #3c3836; /* Gruvbox dark gray */
+  color: #ebdbb2; /* Gruvbox foreground */
   border-radius: 5px;
   font-size: 1em;
 }
@@ -342,23 +342,22 @@ input {
 }
 
 .link-group {
-  border: 1px solid #444;
+  border: 1px solid #665c54; /* Gruvbox gray */
   padding: 10px;
   margin-bottom: 1em;
   border-radius: 8px;
-  background-color: #22232d;
+  background-color: #3c3836; /* Gruvbox dark gray */
 }
 
 .link-group-title {
   font-weight: bold;
-  color: #ff9e64;
+  color: #d79921; /* Gruvbox Yellow */
   margin-bottom: 0.5em;
   width: calc(100% - 20px) !important;
   /* Ensure it takes full width */
   text-align: left !important;
   /* Align left */
-  border-bottom: 1px solid #ff9e64 !important;
-  /* Keep the underline */
+  border-bottom: 1px solid #d79921 !important; /* Gruvbox Yellow */
   padding-bottom: 5px !important;
 }
 
@@ -383,7 +382,7 @@ input {
   display: block;
   width: 100%;
   padding: 10px;
-  background-color: #ad8ee6;
+  background-color: #458588; /* Gruvbox Blue */
   color: white;
   border: none;
   border-radius: 5px;
@@ -394,7 +393,7 @@ input {
 }
 
 #save-settings-button:hover {
-  background-color: #926cdb;
+  background-color: #689d6a; /* Gruvbox Cyan for hover */
 }
 
 /* Responsive adjustments */
