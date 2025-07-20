@@ -201,14 +201,14 @@ nav form {
   max-width: 20em;
   /* Match input max-width */
   width: 100%;
-  padding-bottom: 0.5em;
+  padding-bottom: 0.5em; /* This padding provides the space below the text/input */
   margin: 0 auto;
   /* Center the container itself */
   /* The border-bottom will be applied to the input when active */
 }
 
 .static-prompt {
-  font: 16px 'Ubuntu Mono', monospace;
+  font: 20px 'Ubuntu Mono', monospace; /* Increased font size */
   color: #ebdbb2;
   /* Gruvbox foreground */
   white-space: nowrap;
@@ -217,7 +217,7 @@ nav form {
 
 .search-input {
   background-color: unset;
-  font: 16px 'Ubuntu Mono', monospace;
+  font: 20px 'Ubuntu Mono', monospace; /* Increased font size */
   color: #ebdbb2;
   /* Gruvbox foreground */
   height: 100%;
@@ -234,7 +234,7 @@ nav form {
   transition: width 0.3s ease-in-out, opacity 0.3s ease-in-out;
   /* Smooth transition */
   border-bottom: 1px solid transparent;
-  /* Initially transparent */
+  /* Initially transparent, will not be visible */
   width: 0;
   /* Initially hidden */
   opacity: 0;
@@ -246,8 +246,7 @@ nav form {
   /* Expand width */
   opacity: 1;
   /* Make visible */
-  border-bottom: 1px solid #d79921;
-  /* Gruvbox Yellow when active */
+  /* Remove border-bottom here to ensure no yellow line */
 }
 
 /* Blinking underscore animation */
@@ -262,8 +261,7 @@ nav form {
 }
 
 .blinking-underscore {
-  font: 16px 'Ubuntu Mono', monospace;
-  /* Match input font */
+  font: 20px 'Ubuntu Mono', monospace; /* Increased font size */
   color: #ebdbb2;
   /* Gruvbox foreground */
   white-space: nowrap;
