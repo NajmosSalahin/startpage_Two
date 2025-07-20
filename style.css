@@ -201,11 +201,10 @@ nav form {
   max-width: 20em;
   /* Match input max-width */
   width: 100%;
-  border-bottom: 1px solid #d79921;
-  /* Gruvbox Yellow */
   padding-bottom: 0.5em;
   margin: 0 auto;
   /* Center the container itself */
+  /* The border-bottom will be applied to the input when active */
 }
 
 .static-prompt {
@@ -232,6 +231,14 @@ nav form {
   /* Align text to the left within the input */
   min-width: 10px;
   /* Ensure it doesn't shrink too much */
+  transition: width 0.3s ease-in-out, opacity 0.3s ease-in-out; /* Smooth transition */
+  border-bottom: 1px solid transparent; /* Initially transparent */
+}
+
+.search-input.active-input {
+  width: 100%; /* Expand width */
+  opacity: 1; /* Make visible */
+  border-bottom: 1px solid #d79921; /* Gruvbox Yellow when active */
 }
 
 /* Blinking underscore animation */
