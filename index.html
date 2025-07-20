@@ -1,18 +1,16 @@
 <!DOCTYPE html>
 <html lang="en" class="classes">
-  
-  <head>
-  <title>~</title>
-    <link rel="stylesheet" href="style.css">
 
+<head>
+  <title>~</title>
+  <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
   <!-- YouTube Video Background -->
   <iframe id="bg-youtube-video"
-          src="https://www.youtube.com/embed/ubNfkpbxXUs?autoplay=1&controls=0&disablekb=1&fs=0&loop=1&modestbranding=1&showinfo=0&rel=0&playlist=ubNfkpbxXUs&start=3660&enablejsapi=1"
-          frameborder="0"
-          allow="autoplay; encrypted-media"
-          allowfullscreen>
+    src="https://www.youtube.com/embed/ubNfkpbxXUs?autoplay=1&controls=0&disablekb=1&fs=0&loop=1&modestbranding=1&showinfo=0&rel=0&playlist=ubNfkpbxXUs&start=3660&enablejsapi=1"
+    frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
   </iframe>
 
   <!-- Content Overlay -->
@@ -20,25 +18,24 @@
     <img src="logo.jpg" alt="anime girl">
     <nav>
       <h1>アディブ</h1>
-      <ul>
+      <!-- Link Sections -->
+      <ul id="general-links">
         <li>General</li>
         <li><a href="https://github.com/">github</a></li>
         <li><a href="https://wallhaven.cc/">wallhaven</a></li>
         <li><a href="https://www.netflix.com/">netflix</a></li>
         <li><a href="https://web.whatsapp.com/">whatsapp</a></li>
-
       </ul>
 
-      <ul>
+      <ul id="anime-links">
         <li>Anime</li>
         <li><a href="https://anilist.co/home">anilist</a></li>
         <li><a href="https://animepahe.org/">animepahe</a></li>
         <li><a href="https://animixplay.to/">animixplay</a></li>
         <li><a href="https://subsplease.org/">subsplease</a></li>
-
       </ul>
 
-      <ul>
+      <ul id="reddit-links">
         <li>Reddit</li>
         <li><a href="https://www.reddit.com/r/unixporn/">r/unixporn</a></li>
         <li><a href="https://www.reddit.com/r/Animemes/">r/animeme</a></li>
@@ -46,17 +43,15 @@
         <li><a href="https://www.reddit.com/r/anime_irl/">r/anime_irl</a></li>
       </ul>
 
-      <ul>
+      <ul id="social-links">
         <li>Social</li>
         <li><a href="https://web.whatsapp.com/">whatsapp</a></li>
         <li><a href="https://www.youtube.com/">youtube</a></li>
         <li><a href="https://odysee.com/">odysee</a></li>
         <li><a href="https://www.9gag.com/">9gag</a></li>
-
       </ul>
 
-      <!-- New Link Sections -->
-      <ul>
+      <ul id="gaming-links">
         <li>Gaming</li>
         <li><a href="https://store.steampowered.com/">Steam</a></li>
         <li><a href="https://www.epicgames.com/">Epic Games</a></li>
@@ -64,25 +59,249 @@
         <li><a href="https://www.youtube.com/gaming">YouTube Gaming</a></li>
       </ul>
 
-      <ul>
+      <ul id="tools-links">
         <li>Tools</li>
         <li><a href="https://chat.openai.com/">ChatGPT</a></li>
         <li><a href="https://bard.google.com/">Gemini</a></li>
         <li><a href="https://www.figma.com/">Figma</a></li>
         <li><a href="https://code.visualstudio.com/">VS Code</a></li>
       </ul>
-      
+
       <form action="https://duckduckgo.com/" method="GET">
-        <input autofocus
-               name="q"
-               type="search"
-               placeholder="cd~/_">
+        <input autofocus name="q" type="search" placeholder="cd~/_">
       </form>
     </nav>
   </div>
 
+  <!-- Settings Button -->
+  <button id="settings-button" class="settings-button">⚙️ Settings</button>
+
+  <!-- Settings Modal -->
+  <div id="settings-modal" class="modal">
+    <div class="modal-content">
+      <span class="close-button">&times;</span>
+      <h2>Settings</h2>
+
+      <div class="setting-section">
+        <h3>Background Video</h3>
+        <label for="youtube-video-id">YouTube Video ID:</label>
+        <input type="text" id="youtube-video-id" placeholder="e.g., ubNfkpbxXUs">
+        <div class="checkbox-container">
+          <input type="checkbox" id="black-screen-toggle">
+          <label for="black-screen-toggle">Enable Black Screen</label>
+        </div>
+      </div>
+
+      <div class="setting-section">
+        <h3>Edit Links</h3>
+        <div id="links-editor">
+          <!-- Links will be dynamically loaded here -->
+        </div>
+      </div>
+
+      <button id="save-settings-button">Save Settings</button>
+    </div>
+  </div>
+
   <script>
     var player; // Global variable to hold the YouTube player object
+    const defaultVideoId = 'ubNfkpbxXUs'; // Your default video ID
+    const defaultLinks = {
+      "general-links": {
+        title: "General",
+        links: [
+          { name: "github", url: "https://github.com/" },
+          { name: "wallhaven", url: "https://wallhaven.cc/" },
+          { name: "netflix", url: "https://www.netflix.com/" },
+          { name: "whatsapp", url: "https://web.whatsapp.com/" },
+        ]
+      },
+      "anime-links": {
+        title: "Anime",
+        links: [
+          { name: "anilist", url: "https://anilist.co/home" },
+          { name: "animepahe", url: "https://animepahe.org/" },
+          { name: "animixplay", url: "https://animixplay.to/" },
+          { name: "subsplease", url: "https://subsplease.org/" },
+        ]
+      },
+      "reddit-links": {
+        title: "Reddit",
+        links: [
+          { name: "r/unixporn", url: "https://www.reddit.com/r/unixporn/" },
+          { name: "r/animeme", url: "https://www.reddit.com/r/Animemes/" },
+          { name: "r/archlinux", url: "https://www.reddit.com/r/archlinux/" },
+          { name: "r/anime_irl", url: "https://www.reddit.com/r/anime_irl/" },
+        ]
+      },
+      "social-links": {
+        title: "Social",
+        links: [
+          { name: "whatsapp", url: "https://web.whatsapp.com/" },
+          { name: "youtube", url: "https://www.youtube.com/" },
+          { name: "odysee", url: "https://odysee.com/" },
+          { name: "9gag", url: "https://www.9gag.com/" },
+        ]
+      },
+      "gaming-links": {
+        title: "Gaming",
+        links: [
+          { name: "Steam", url: "https://store.steampowered.com/" },
+          { name: "Epic Games", url: "https://www.epicgames.com/" },
+          { name: "Twitch", url: "https://www.twitch.tv/" },
+          { name: "YouTube Gaming", url: "https://www.youtube.com/gaming" },
+        ]
+      },
+      "tools-links": {
+        title: "Tools",
+        links: [
+          { name: "ChatGPT", url: "https://chat.openai.com/" },
+          { name: "Gemini", url: "https://bard.google.com/" },
+          { name: "Figma", url: "https://www.figma.com/" },
+          { name: "VS Code", url: "https://code.visualstudio.com/" },
+        ]
+      }
+    };
+
+
+    // Function to load settings from localStorage
+    function loadSettings() {
+      const savedVideoId = localStorage.getItem('youtubeVideoId');
+      const savedBlackScreen = localStorage.getItem('blackScreenEnabled');
+      const savedLinks = localStorage.getItem('userLinks');
+
+      if (savedVideoId) {
+        document.getElementById('youtube-video-id').value = savedVideoId;
+      } else {
+        document.getElementById('youtube-video-id').value = defaultVideoId;
+      }
+
+      if (savedBlackScreen === 'true') {
+        document.getElementById('black-screen-toggle').checked = true;
+        document.getElementById('bg-youtube-video').style.display = 'none';
+        document.body.style.backgroundColor = '#000'; // Set body background to black
+      } else {
+        document.getElementById('black-screen-toggle').checked = false;
+        document.getElementById('bg-youtube-video').style.display = 'block';
+        document.body.style.backgroundColor = ''; // Revert to CSS default
+      }
+
+      if (savedLinks) {
+        return JSON.parse(savedLinks);
+      }
+      return defaultLinks;
+    }
+
+    // Function to save settings to localStorage
+    function saveSettings() {
+      const videoId = document.getElementById('youtube-video-id').value;
+      const blackScreenEnabled = document.getElementById('black-screen-toggle').checked;
+      localStorage.setItem('youtubeVideoId', videoId);
+      localStorage.setItem('blackScreenEnabled', blackScreenEnabled);
+
+      const currentLinks = {};
+      document.querySelectorAll('.link-group').forEach(group => {
+        const groupId = group.dataset.groupId;
+        const title = group.querySelector('.link-group-title').value;
+        const links = [];
+        group.querySelectorAll('.link-item').forEach(item => {
+          const name = item.querySelector('.link-name-input').value;
+          const url = item.querySelector('.link-url-input').value;
+          links.push({ name, url });
+        });
+        currentLinks[groupId] = { title, links };
+      });
+      localStorage.setItem('userLinks', JSON.stringify(currentLinks));
+
+      applyVideoSettings();
+      updateLinksOnPage(currentLinks);
+    }
+
+    // Function to apply video settings
+    function applyVideoSettings() {
+      const videoId = document.getElementById('youtube-video-id').value;
+      const blackScreenEnabled = document.getElementById('black-screen-toggle').checked;
+      const videoIframe = document.getElementById('bg-youtube-video');
+
+      if (blackScreenEnabled) {
+        videoIframe.style.display = 'none';
+        document.body.style.backgroundColor = '#000'; // Black background
+      } else {
+        videoIframe.style.display = 'block';
+        document.body.style.backgroundColor = ''; // Revert to CSS default
+        if (player && typeof player.loadVideoById === 'function') {
+          player.loadVideoById(videoId);
+        } else {
+          // Fallback if player not ready yet or API not loaded
+          videoIframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&controls=0&disablekb=1&fs=0&loop=1&modestbranding=1&showinfo=0&rel=0&playlist=${videoId}&start=3660&enablejsapi=1`;
+        }
+      }
+    }
+
+    // Function to update links on the main page
+    function updateLinksOnPage(linksData) {
+      for (const groupId in linksData) {
+        const ulElement = document.getElementById(groupId);
+        if (ulElement) {
+          // Clear existing links except the title
+          while (ulElement.children.length > 1) {
+            ulElement.removeChild(ulElement.lastChild);
+          }
+          // Update title
+          ulElement.querySelector('li:first-child').textContent = linksData[groupId].title;
+
+          // Add new links
+          linksData[groupId].links.forEach(link => {
+            const li = document.createElement('li');
+            const a = document.createElement('a');
+            a.href = link.url;
+            a.textContent = link.name;
+            li.appendChild(a);
+            ulElement.appendChild(li);
+          });
+        }
+      }
+    }
+
+    // Function to populate the links editor in the modal
+    function populateLinksEditor(linksData) {
+      const linksEditorDiv = document.getElementById('links-editor');
+      linksEditorDiv.innerHTML = ''; // Clear previous content
+
+      for (const groupId in linksData) {
+        const group = linksData[groupId];
+        const groupDiv = document.createElement('div');
+        groupDiv.classList.add('link-group');
+        groupDiv.dataset.groupId = groupId;
+
+        const groupTitleInput = document.createElement('input');
+        groupTitleInput.type = 'text';
+        groupTitleInput.classList.add('link-group-title');
+        groupTitleInput.value = group.title;
+        groupDiv.appendChild(groupTitleInput);
+
+        group.links.forEach(link => {
+          const linkItemDiv = document.createElement('div');
+          linkItemDiv.classList.add('link-item');
+
+          const nameInput = document.createElement('input');
+          nameInput.type = 'text';
+          nameInput.classList.add('link-name-input');
+          nameInput.value = link.name;
+          linkItemDiv.appendChild(nameInput);
+
+          const urlInput = document.createElement('input');
+          urlInput.type = 'text';
+          urlInput.classList.add('link-url-input');
+          urlInput.value = link.url;
+          linkItemDiv.appendChild(urlInput);
+
+          groupDiv.appendChild(linkItemDiv);
+        });
+        linksEditorDiv.appendChild(groupDiv);
+      }
+    }
+
 
     // This function is called by the YouTube IFrame Player API when it's ready
     function onYouTubeIframeAPIReady() {
@@ -101,8 +320,11 @@
         player.unMute(); // Unmute the video
       }
 
+      // Apply initial video settings after player is ready
+      applyVideoSettings();
+
       // Add event listener for keyboard input
-      document.addEventListener('keydown', function(e) {
+      document.addEventListener('keydown', function (e) {
         // Check for Ctrl + M (removed Shift key)
         if (e.ctrlKey && e.key === 'M') {
           e.preventDefault(); // Prevent default browser action for the key combination
@@ -119,6 +341,42 @@
     tag.src = "https://www.youtube.com/iframe_api";
     var firstScriptTag = document.getElementsByTagName('script')[0];
     firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+
+    // Modal functionality
+    document.addEventListener('DOMContentLoaded', () => {
+      const settingsButton = document.getElementById('settings-button');
+      const modal = document.getElementById('settings-modal');
+      const closeButton = document.querySelector('.close-button');
+      const saveSettingsButton = document.getElementById('save-settings-button');
+
+      // Load and apply settings on page load
+      const userLinks = loadSettings();
+      updateLinksOnPage(userLinks); // Apply links to the main page
+      populateLinksEditor(userLinks); // Populate editor with loaded links
+
+      settingsButton.addEventListener('click', () => {
+        modal.style.display = 'block';
+        // Repopulate editor every time modal opens to reflect current state
+        populateLinksEditor(loadSettings());
+      });
+
+      closeButton.addEventListener('click', () => {
+        modal.style.display = 'none';
+      });
+
+      window.addEventListener('click', (event) => {
+        if (event.target === modal) {
+          modal.style.display = 'none';
+        }
+      });
+
+      saveSettingsButton.addEventListener('click', () => {
+        saveSettings();
+        modal.style.display = 'none';
+      });
+    });
   </script>
 </body>
+
 </html>
