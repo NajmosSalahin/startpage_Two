@@ -207,18 +207,23 @@ input {
 /* Settings Button Styles */
 .settings-button {
   position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background-color: #ad8ee6;
+  bottom: 10px; /* Adjusted for perfect bottom alignment */
+  right: 10px; /* Adjusted for perfect right alignment */
+  background-color: #ad8ee6; /* Matching previous button color */
   color: white;
   border: none;
-  border-radius: 5px;
-  padding: 10px 15px;
-  font-size: 1em;
+  border-radius: 50%; /* Make it circular */
+  width: 40px; /* Fixed width for circular shape */
+  height: 40px; /* Fixed height for circular shape */
+  font-size: 1.5em; /* Size of the gear icon */
+  display: flex; /* Use flexbox to center content */
+  align-items: center; /* Center vertically */
+  justify-content: center; /* Center horizontally */
   cursor: pointer;
   z-index: 100;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   transition: background-color 0.3s ease;
+  padding: 0; /* Remove padding to ensure perfect circle */
 }
 
 .settings-button:hover {
@@ -261,7 +266,8 @@ input {
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
   position: relative;
   color: #ebdbb2;
-  font-size: 0.8em; /* Adjust font size for modal content */
+  font-size: 0.8em;
+  /* Adjust font size for modal content */
 }
 
 .close-button {
@@ -331,7 +337,8 @@ input {
 
 .checkbox-container input[type="checkbox"] {
   margin-right: 10px;
-  width: auto; /* Override general input width */
+  width: auto;
+  /* Override general input width */
 }
 
 .link-group {
@@ -346,9 +353,12 @@ input {
   font-weight: bold;
   color: #ff9e64;
   margin-bottom: 0.5em;
-  width: calc(100% - 20px) !important; /* Ensure it takes full width */
-  text-align: left !important; /* Align left */
-  border-bottom: 1px solid #ff9e64 !important; /* Keep the underline */
+  width: calc(100% - 20px) !important;
+  /* Ensure it takes full width */
+  text-align: left !important;
+  /* Align left */
+  border-bottom: 1px solid #ff9e64 !important;
+  /* Keep the underline */
   padding-bottom: 5px !important;
 }
 
@@ -356,13 +366,17 @@ input {
   display: flex;
   gap: 10px;
   margin-bottom: 0.5em;
-  flex-wrap: wrap; /* Allow wrapping on small screens */
+  flex-wrap: wrap;
+  /* Allow wrapping on small screens */
 }
 
 .link-item input {
-  flex: 1; /* Distribute space evenly */
-  min-width: 120px; /* Minimum width for inputs */
-  margin-bottom: 0 !important; /* Remove bottom margin from individual inputs */
+  flex: 1;
+  /* Distribute space evenly */
+  min-width: 120px;
+  /* Minimum width for inputs */
+  margin-bottom: 0 !important;
+  /* Remove bottom margin from individual inputs */
 }
 
 #save-settings-button {
@@ -386,7 +400,8 @@ input {
 /* Responsive adjustments */
 @media (max-width: 768px) {
   nav {
-    grid-template-columns: repeat(2, 1fr); /* 2 columns on tablets */
+    grid-template-columns: repeat(2, 1fr);
+    /* 2 columns on tablets */
     margin-left: 0;
     justify-content: center;
   }
@@ -397,30 +412,60 @@ input {
   nav ul:nth-of-type(4),
   nav ul:nth-of-type(5),
   nav ul:nth-of-type(6) {
-    grid-column: unset; /* Reset column for flexible placement */
-    grid-row: unset; /* Reset row */
+    grid-column: unset;
+    /* Reset column for flexible placement */
+    grid-row: unset;
+    /* Reset row */
   }
 
   /* Re-assign grid positions for 2 columns */
-  nav ul:nth-of-type(1) { grid-column: 1; grid-row: 2; }
-  nav ul:nth-of-type(2) { grid-column: 2; grid-row: 2; }
-  nav ul:nth-of-type(3) { grid-column: 1; grid-row: 3; }
-  nav ul:nth-of-type(4) { grid-column: 2; grid-row: 3; }
-  nav ul:nth-of-type(5) { grid-column: 1; grid-row: 4; }
-  nav ul:nth-of-type(6) { grid-column: 2; grid-row: 4; }
+  nav ul:nth-of-type(1) {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  nav ul:nth-of-type(2) {
+    grid-column: 2;
+    grid-row: 2;
+  }
+
+  nav ul:nth-of-type(3) {
+    grid-column: 1;
+    grid-row: 3;
+  }
+
+  nav ul:nth-of-type(4) {
+    grid-column: 2;
+    grid-row: 3;
+  }
+
+  nav ul:nth-of-type(5) {
+    grid-column: 1;
+    grid-row: 4;
+  }
+
+  nav ul:nth-of-type(6) {
+    grid-column: 2;
+    grid-row: 4;
+  }
 
   nav form {
-    grid-column: 1 / -1; /* Spans both columns */
-    grid-row: 5; /* New row */
+    grid-column: 1 / -1;
+    /* Spans both columns */
+    grid-row: 5;
+    /* New row */
   }
 
   .content-overlay {
-    flex-direction: column; /* Stack image and nav vertically */
+    flex-direction: column;
+    /* Stack image and nav vertically */
   }
 
   img {
-    margin-bottom: 2em; /* Space below image */
-    width: 12em; /* Adjust image size for smaller screens */
+    margin-bottom: 2em;
+    /* Space below image */
+    width: 12em;
+    /* Adjust image size for smaller screens */
   }
 
   .modal-content {
@@ -429,17 +474,20 @@ input {
   }
 
   .link-item {
-    flex-direction: column; /* Stack name and URL inputs vertically */
+    flex-direction: column;
+    /* Stack name and URL inputs vertically */
   }
 
   .link-item input {
-    width: calc(100% - 20px) !important; /* Full width for inputs in stacked layout */
+    width: calc(100% - 20px) !important;
+    /* Full width for inputs in stacked layout */
   }
 }
 
 @media (max-width: 480px) {
   nav {
-    grid-template-columns: 1fr; /* Single column on mobile */
+    grid-template-columns: 1fr;
+    /* Single column on mobile */
   }
 
   nav ul:nth-of-type(1),
@@ -448,8 +496,10 @@ input {
   nav ul:nth-of-type(4),
   nav ul:nth-of-type(5),
   nav ul:nth-of-type(6) {
-    grid-column: 1; /* All in first column */
-    grid-row: unset; /* Let them flow */
+    grid-column: 1;
+    /* All in first column */
+    grid-row: unset;
+    /* Let them flow */
   }
 
   nav form {
@@ -458,12 +508,14 @@ input {
   }
 
   html {
-    font-size: 20px; /* Smaller base font size for very small screens */
+    font-size: 20px;
+    /* Smaller base font size for very small screens */
   }
 
   .settings-button {
-    padding: 8px 12px;
-    font-size: 0.9em;
+    width: 35px; /* Slightly smaller on very small screens */
+    height: 35px;
+    font-size: 1.3em;
   }
 
   .modal-content h2 {
