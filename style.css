@@ -1,9 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap');
 
 html {
-  background-color: #1d2021; /* Gruvbox themed black */
+  background-color: #1d2021;
+  /* Gruvbox themed black */
   align-items: center;
-  color: #ebdbb2; /* Gruvbox foreground */
+  color: #ebdbb2;
+  /* Gruvbox foreground */
   display: flex;
   font-family: 'Ubuntu Mono', monospace;
   font-size: 25px;
@@ -79,7 +81,8 @@ h1 {
   /* Spans all 3 columns */
   margin: 0;
   text-align: center;
-  color: #cc241d; /* Gruvbox Red */
+  color: #cc241d;
+  /* Gruvbox Red */
   font-weight: normal;
   margin-bottom: 1em;
   /* Space below the title */
@@ -92,7 +95,8 @@ a {
 
 a:focus,
 a:hover {
-  color: #83a598; /* Gruvbox Green/Aqua for hover */
+  color: #83a598;
+  /* Gruvbox Green/Aqua for hover */
 }
 
 nav {
@@ -117,11 +121,13 @@ ul {
 li:first-child {
   font-weight: bold;
   line-height: 2em;
-  color: #83a598; /* Gruvbox Aqua */
+  color: #83a598;
+  /* Gruvbox Aqua */
 }
 
 img {
-  border: 2px solid #ebdbb2; /* Gruvbox foreground */
+  border: 2px solid #ebdbb2;
+  /* Gruvbox foreground */
   height: auto;
   object-fit: cover;
   object-position: 50% 100%;
@@ -180,12 +186,24 @@ nav form {
   /* Allow form to take full width of its grid area */
   margin-top: 2em;
   /* Add some space above the search bar */
+  display: flex; /* Use flexbox for input and underscore */
+  justify-content: center; /* Center the input and underscore */
+  align-items: baseline; /* Align them at the baseline */
+}
+
+.search-input-container {
+  display: flex;
+  align-items: baseline; /* Align input and underscore */
+  max-width: 20em; /* Match input max-width */
+  width: 100%;
+  justify-content: center;
 }
 
 input {
   background-color: unset;
   font: 16px 'Ubuntu Mono', monospace;
-  color: #ebdbb2; /* Gruvbox foreground */
+  color: #ebdbb2;
+  /* Gruvbox foreground */
   height: 100%;
   width: 100%;
   max-width: 20em;
@@ -194,40 +212,67 @@ input {
   border-bottom-style: solid;
   border-left-style: hidden;
   border-right-style: hidden;
-  border-bottom-color: #d79921; /* Gruvbox Yellow */
+  border-bottom-color: #d79921;
+  /* Gruvbox Yellow */
   text-align: center;
   outline: 0;
   padding-bottom: 0.5em;
-  margin: 0 auto;
-  /* Center the input within its parent form */
+  margin: 0; /* Remove margin from input itself */
   display: block;
   /* Make it a block element to apply margin: auto */
 }
 
+/* Blinking underscore animation */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.blinking-underscore {
+  font: 16px 'Ubuntu Mono', monospace; /* Match input font */
+  color: #ebdbb2; /* Gruvbox foreground */
+  animation: blink 1s step-end infinite;
+  padding-bottom: 0.5em; /* Match input padding-bottom */
+  margin-left: 0; /* No space between input and underscore */
+}
+
+
 /* Settings Button Styles */
 .settings-button {
   position: fixed;
-  bottom: 5px; /* Adjusted for tighter bottom alignment */
-  right: 5px; /* Adjusted for tighter right alignment */
-  background-color: #458588; /* Gruvbox Blue */
-  color: transparent; /* Make text/icon transparent */
+  bottom: 2px; /* Even tighter bottom alignment */
+  right: 2px; /* Even tighter right alignment */
+  background-color: #458588;
+  /* Gruvbox Blue */
+  color: transparent;
+  /* Make text/icon transparent */
   border: none;
-  border-radius: 50%; /* Make it circular */
-  width: 20px; /* Smaller fixed width for circular shape */
-  height: 20px; /* Smaller fixed height for circular shape */
-  font-size: 0; /* Hide any content like the gear icon */
-  display: flex; /* Use flexbox to center content */
-  align-items: center; /* Center vertically */
-  justify-content: center; /* Center horizontally */
+  border-radius: 50%;
+  /* Make it circular */
+  width: 15px;
+  /* Even smaller fixed width for circular shape */
+  height: 15px;
+  /* Even smaller fixed height for circular shape */
+  font-size: 0;
+  /* Hide any content like the gear icon */
+  display: flex;
+  /* Use flexbox to center content */
+  align-items: center;
+  /* Center vertically */
+  justify-content: center;
+  /* Center horizontally */
   cursor: pointer;
   z-index: 100;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Smaller shadow */
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  /* Smaller shadow */
   transition: background-color 0.3s ease;
-  padding: 0; /* Remove padding to ensure perfect circle */
+  padding: 0;
+  /* Remove padding to ensure perfect circle */
 }
 
 .settings-button:hover {
-  background-color: #689d6a; /* Gruvbox Cyan for hover */
+  background-color: #689d6a;
+  /* Gruvbox Cyan for hover */
 }
 
 /* Modal Styles */
@@ -254,10 +299,12 @@ input {
 }
 
 .modal-content {
-  background-color: #282828; /* Gruvbox dark background */
+  background-color: #282828;
+  /* Gruvbox dark background */
   margin: auto;
   padding: 20px;
-  border: 1px solid #504945; /* Gruvbox gray */
+  border: 1px solid #504945;
+  /* Gruvbox gray */
   width: 90%;
   /* Responsive width */
   max-width: 600px;
@@ -265,13 +312,15 @@ input {
   border-radius: 10px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
   position: relative;
-  color: #ebdbb2; /* Gruvbox foreground */
+  color: #ebdbb2;
+  /* Gruvbox foreground */
   font-size: 0.8em;
   /* Adjust font size for modal content */
 }
 
 .close-button {
-  color: #a89984; /* Gruvbox gray */
+  color: #a89984;
+  /* Gruvbox gray */
   position: absolute;
   top: 10px;
   right: 20px;
@@ -282,12 +331,14 @@ input {
 
 .close-button:hover,
 .close-button:focus {
-  color: #ebdbb2; /* Gruvbox foreground */
+  color: #ebdbb2;
+  /* Gruvbox foreground */
   text-decoration: none;
 }
 
 .modal-content h2 {
-  color: #cc241d; /* Gruvbox Red */
+  color: #cc241d;
+  /* Gruvbox Red */
   text-align: center;
   margin-bottom: 1em;
   font-size: 1.5em;
@@ -296,7 +347,8 @@ input {
 .setting-section {
   margin-bottom: 1.5em;
   padding-bottom: 1.5em;
-  border-bottom: 1px solid #665c54; /* Gruvbox gray */
+  border-bottom: 1px solid #665c54;
+  /* Gruvbox gray */
 }
 
 .setting-section:last-child {
@@ -306,7 +358,8 @@ input {
 }
 
 .setting-section h3 {
-  color: #83a598; /* Gruvbox Aqua */
+  color: #83a598;
+  /* Gruvbox Aqua */
   margin-top: 0;
   margin-bottom: 0.8em;
   font-size: 1.2em;
@@ -315,16 +368,20 @@ input {
 .modal-content label {
   display: block;
   margin-bottom: 0.5em;
-  color: #a89984; /* Gruvbox gray */
+  color: #a89984;
+  /* Gruvbox gray */
 }
 
 .modal-content input[type="text"] {
   width: calc(100% - 20px);
   padding: 8px 10px;
   margin-bottom: 1em;
-  border: 1px solid #665c54; /* Gruvbox gray */
-  background-color: #3c3836; /* Gruvbox dark gray */
-  color: #ebdbb2; /* Gruvbox foreground */
+  border: 1px solid #665c54;
+  /* Gruvbox gray */
+  background-color: #3c3836;
+  /* Gruvbox dark gray */
+  color: #ebdbb2;
+  /* Gruvbox foreground */
   border-radius: 5px;
   font-size: 1em;
 }
@@ -342,22 +399,26 @@ input {
 }
 
 .link-group {
-  border: 1px solid #665c54; /* Gruvbox gray */
+  border: 1px solid #665c54;
+  /* Gruvbox gray */
   padding: 10px;
   margin-bottom: 1em;
   border-radius: 8px;
-  background-color: #3c3836; /* Gruvbox dark gray */
+  background-color: #3c3836;
+  /* Gruvbox dark gray */
 }
 
 .link-group-title {
   font-weight: bold;
-  color: #d79921; /* Gruvbox Yellow */
+  color: #d79921;
+  /* Gruvbox Yellow */
   margin-bottom: 0.5em;
   width: calc(100% - 20px) !important;
   /* Ensure it takes full width */
   text-align: left !important;
   /* Align left */
-  border-bottom: 1px solid #d79921 !important; /* Gruvbox Yellow */
+  border-bottom: 1px solid #d79921 !important;
+  /* Gruvbox Yellow */
   padding-bottom: 5px !important;
 }
 
@@ -382,7 +443,8 @@ input {
   display: block;
   width: 100%;
   padding: 10px;
-  background-color: #458588; /* Gruvbox Blue */
+  background-color: #458588;
+  /* Gruvbox Blue */
   color: white;
   border: none;
   border-radius: 5px;
@@ -393,7 +455,8 @@ input {
 }
 
 #save-settings-button:hover {
-  background-color: #689d6a; /* Gruvbox Cyan for hover */
+  background-color: #689d6a;
+  /* Gruvbox Cyan for hover */
 }
 
 /* Responsive adjustments */
@@ -512,9 +575,11 @@ input {
   }
 
   .settings-button {
-    width: 20px; /* Even smaller on very small screens */
-    height: 20px;
-    font-size: 0; /* Hide any content like the gear icon */
+    width: 15px;
+    /* Even smaller on very small screens */
+    height: 15px;
+    font-size: 0;
+    /* Hide any content like the gear icon */
   }
 
   .modal-content h2 {
